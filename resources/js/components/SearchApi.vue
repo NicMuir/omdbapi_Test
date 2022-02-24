@@ -57,9 +57,7 @@
                 .then(response => response.json())
                 .then(json => {
                     console.log(json);
-                   
                     this.data =  json;
-
                     console.log(this.data.imdbID);
                    }
 
@@ -69,14 +67,15 @@
                 },
 
             AddWatchlist(){
-                fetch('api/addMovie', {
-                        method: 'post',
-                        body: JSON.stringify(this.user),
-                        headers: {
-                            'content-type': 'application/json'
-                        }
-                    })
-                        .then(res => res.json())
+                // post('addMovie', {
+                //         method: 'post',
+                //         body: this.data, //JSON.stringify(this.data),
+                //         headers: {
+                //             'content-type': 'application/json'
+                //         }
+                //     })
+                //         .then(res => res.json())
+                axios.post('api/addMovie', this.data).then(responce => {console.log(responce)});
 
             }
         }

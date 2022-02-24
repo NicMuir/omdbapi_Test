@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Http\Controllers\MovieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +20,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::post('/addMovie', 'MovieController@addMovie');
+
+
+Route::get('/watchlist',function(){
+    return view('watchlist');
+});
+// Route::get('tests',function(){
+//     return Auth::id();
+// });
+
+
+
+
+Route::post('api/addMovie', [MovieController::class,'addMovie']);

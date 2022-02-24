@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\Movie;
 
 class User extends Authenticatable
 {
@@ -43,6 +45,6 @@ class User extends Authenticatable
     ];
 
     public function movies(){
-        return $this->hasMany(Movie::class);
+        return $this->belongsToMany(Movie::class,'movie_user');
     }
 }

@@ -3,18 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
+use App\Models\User;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class MovieController extends Controller
 {
+
+
     public function create()
     {
         return view('/');
     }
 
-    public function addMovie(Request $request){
-        // DB::table('movies')->insert([
+    public function addMovie(Request $request ){
+        
+        
+        // Movie::Create([
         //     'imdbID' => $request->imdbID,
         //     'title'=>$request->Title,
         //     'year'=>$request->Year,
@@ -23,15 +32,18 @@ class MovieController extends Controller
         //     'plot'=>$request->Plot,
         // ]);
 
-        $movie = new Movie();
-        $movie->imdbID = $request->imdbID;
-        $movie->title = $request->Title;
-        $movie->year = $request->Year;
-        $movie->year_released = $request->Released;
-        $movie->poster = $request->Poster;
-        $movie->plot = $request->Plot;
-        $movie->save();
-        return $user;
+
+        Movie::firstOrCreate([
+            'imdbID' => $request->imdbID,
+            'title'=>$request->Title,
+            'year'=>$request->Year,
+            'year_released'=>$request->Released,
+            'poster'=>$request->Poster,
+            'plot'=>$request->Plot,
+        ]);
+
+        $currentUser=  Auth::user();
+        $currentUser->movies()->attach(Movie::select('id')->where('imdbID', $request->imdbID)->get());
     }
 
 }

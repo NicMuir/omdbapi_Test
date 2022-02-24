@@ -23,6 +23,7 @@ window.Vue = require('vue').default;
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('search-api', require('./components/SearchApi.vue').default);
+Vue.component('watch-list', require('./components/Watchlist.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

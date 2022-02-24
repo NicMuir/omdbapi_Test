@@ -18,10 +18,10 @@ return new class extends Migration
             $table->timestamps();
             $table->string('imdbID');
             $table->string('title');
-            $table->string('year');
-            $table->string('year_released');
-            $table->string('poster');
-            $table->text('plot');
+            $table->string('year')->nullable();
+            $table->string('year_released')->nullable();
+            $table->string('poster')->nullable();
+            $table->text('plot')->nullable();
         });
     }
 
