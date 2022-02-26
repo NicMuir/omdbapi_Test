@@ -20,30 +20,31 @@ class MovieController extends Controller
         return view('/');
     }
 
-    public function addMovie(Request $request ){
-        
-        
-        // Movie::Create([
-        //     'imdbID' => $request->imdbID,
-        //     'title'=>$request->Title,
-        //     'year'=>$request->Year,
-        //     'year_released'=>$request->Released,
-        //     'poster'=>$request->Poster,
-        //     'plot'=>$request->Plot,
-        // ]);
-
-
-        Movie::firstOrCreate([
-            'imdbID' => $request->imdbID,
+    public function addMovie(Request $request){
+        $movie = Movie::firstOrCreate([
+            'imdbID' => $request->imdbID
+        ],
+        [
             'title'=>$request->Title,
             'year'=>$request->Year,
             'year_released'=>$request->Released,
             'poster'=>$request->Poster,
             'plot'=>$request->Plot,
-        ]);
+        ]
+    );
+
 
         $currentUser=  Auth::user();
-        $currentUser->movies()->attach(Movie::select('id')->where('imdbID', $request->imdbID)->get());
+        $currentUser->movies()->attach($movie->id);
     }
+
+        public function getAllMoviesToUser()
+        {
+            //$currentUser = Auth::user() ;
+            $currentUser = $request->user();
+            //return ($currentUser->movies);//($currentUser->movies());
+
+            return view('/watchlist',['Movies'=>$currentUser->movies]);
+        }
 
 }

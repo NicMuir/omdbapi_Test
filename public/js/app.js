@@ -5515,21 +5515,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['movies'],
   data: function data() {
     return {};
   },
   mounted: function mounted() {
     console.log('Component mounted.');
+    /**
+     * get all entries in movie_user table for specific user
+     * use these entries and get the movies from the movie tables with the movie_id
+     * display
+     * profit ...
+     */
   },
   methods: {
     Remove_from_Watchlist: function Remove_from_Watchlist() {}
@@ -28451,79 +28449,20 @@ var render = function () {
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [_vm._v("Dashboard")]),
           _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.message,
-                  expression: "message",
-                },
-              ],
-              domProps: { value: _vm.message },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.message = $event.target.value
-                },
-              },
-            }),
-            _vm._v(" "),
+          _c("div", { staticClass: "card", attrs: { id: "Movie_Display" } }, [
             _c(
-              "button",
-              {
-                attrs: { id: "search" },
-                on: {
-                  click: function ($event) {
-                    return _vm.getMovie()
-                  },
-                },
-              },
-              [_vm._v("Search")]
+              "div",
+              { staticClass: "card-body" },
+              _vm._l(_vm.movies, function (movie) {
+                return _c("tr", { key: movie.id }, [
+                  _c("td", [_vm._v(_vm._s(movie.title))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(movie.plot))]),
+                ])
+              }),
+              0
             ),
           ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "card",
-              staticStyle: { display: "none" },
-              attrs: { id: "Movie_Display" },
-            },
-            [
-              _c("div", { staticClass: "card-body" }, [
-                _c(
-                  "tbody",
-                  _vm._l(_vm.users, function (user) {
-                    return _c("tr", { key: user.id }, [
-                      _c("td", [_vm._v(_vm._s(user.url))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(user.lastname))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(user.email))]),
-                    ])
-                  }),
-                  0
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    attrs: { id: "search" },
-                    on: {
-                      click: function ($event) {
-                        return _vm.Remove_from_Watchlist()
-                      },
-                    },
-                  },
-                  [_vm._v("Add to Watchlist")]
-                ),
-              ]),
-            ]
-          ),
         ]),
       ]),
     ]),

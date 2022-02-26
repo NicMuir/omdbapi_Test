@@ -4,24 +4,15 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Dashboard</div>
-
-                    <div class="card-body">
-                       <input v-model="message" />
-                       <button id="search" @click='getMovie()'>Search</button>
-                    </div>
-
                 
-                    <div id="Movie_Display" class="card" style="display:none">
+                    <div id="Movie_Display" class="card">
                         <!-- <div class="card-header">Dashboard</div> -->
                         <div  class="card-body" >
-                       <tbody>
-                            <tr v-for="user in users" :key="user.id">
-                            <td>{{ user.url }}</td>
-                            <td>{{ user.lastname }}</td>
-                            <td>{{ user.email }}</td>
-                            </tr>
-                        </tbody>
-                       <button id="search" @click='Remove_from_Watchlist()'>Add to Watchlist</button>
+                        <tr v-for="movie in movies" v-bind:key="movie.id">
+                            <td>{{ movie.title }}</td>
+                            <td>{{ movie.plot }}</td>
+                        </tr>
+                     
                         </div>
                         
                     </div>
@@ -33,16 +24,24 @@
 
 <script>
     export default {
+
+        props:['movies'],
+
         data(){
             return{
-           
+                
             }
         },
             
 
         mounted() {
             console.log('Component mounted.');
-
+            /**
+             * get all entries in movie_user table for specific user
+             * use these entries and get the movies from the movie tables with the movie_id
+             * display
+             * profit ...
+             */
         },
 
         methods:{
