@@ -1,21 +1,31 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Dashboard</div>
-                
-                    <div id="Movie_Display" class="card">
-                        <!-- <div class="card-header">Dashboard</div> -->
-                        <div  class="card-body" >
-                        <tr v-for="movie in movies" v-bind:key="movie.id">
-                            <td>{{ movie.title }}</td>
-                            <td>{{ movie.plot }}</td>
-                        </tr>
-                     
+    <div class="container-fluid">
+        <div class="">
+            <div class="base-width">
+                <div class="card" >
+                    <div class="card-header">Watchlist</div>
+                        <div class="card-wrapper" >
+                            <ul class="pagination">
+
+                                <div id="card" class="card card-flip text-center "  v-for="movie in movies" v-bind:key="movie.id">
+                                        <div class="card-front">
+                                            <div class="card-up">
+                                                <img :src=movie.poster>
+                                            </div>
+                                        </div>
+                                        <div class="card-back">
+                                            <div class="card-body">
+                                                {{ movie.title }}
+                                                <br>
+                                                {{ movie.plot }}
+                                                <br>
+                                                {{ movie.ratings }}
+                                                <button id="search" @click='Remove_from_Watchlist(movie)'>Remove from watchlist</button>
+                                            </div>
+                                        </div>
+                                </div>
+                            </ul>
                         </div>
-                        
-                    </div>
                 </div>
             </div>
         </div>
@@ -45,9 +55,14 @@
         },
 
         methods:{
-            Remove_from_Watchlist(){
-
+            Remove_from_Watchlist(movie){
+                axios.post('api/removeMovie', movie).then(responce => {console.log(responce)});
+                window.location.reload()
             }
         }
     }
 </script>
+
+<style>
+  @import '../../css/app.css';
+</style>

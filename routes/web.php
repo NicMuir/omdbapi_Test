@@ -9,11 +9,16 @@ Auth::routes();
 
 Route::view('/', 'auth.login');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//Route::view('/watchlist','watchlist');
 
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [MovieController::class,'getAllMoviesToUser']);
+
+
+
+Route::post('api/MovieToDB', [MovieController::class,'MovieToDB']);
 Route::post('api/addMovie', [MovieController::class,'addMovie']);
+Route::post('api/removeMovie', [MovieController::class,'removeMovie']);
 
 
 
@@ -25,7 +30,7 @@ Route::post('api/addMovie', [MovieController::class,'addMovie']);
 
 
 
-Route::get('watchlist', [MovieController::class,'getAllMoviesToUser']);
+
 
 
 

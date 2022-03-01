@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <watch-list :movies="{{ $movies }}" ></watch-list>
+            <watch-list :movies= "{{ $Movies }}" ></watch-list>
         </div>
     </div>
 </div>
