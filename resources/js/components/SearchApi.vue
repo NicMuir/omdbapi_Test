@@ -22,8 +22,9 @@
                             Plot:
                             {{data.plot}}
                             <br>
-                            Ratings:
-                            {{data.ratings}}
+                            Rating:
+                            {{data.rating}}
+                            <br>
                         <button id="search" @click='AddWatchlist()'>Add to Watchlist</button>
                             </div>
                             
@@ -61,7 +62,7 @@
                 axios.post('api/MovieToDB', {Title: this.message }).then(responce => {
                     
                     this.data = responce.data;
-                    console.log(this.data.ratings);
+                    console.log(this.data);
                     });
 
                 document.getElementById("Movie_Display").style.display = "block";

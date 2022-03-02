@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('year')->nullable();
             $table->string('year_released')->nullable();
-            $table->string('ratings')->nullable();
+            $table->string('rating')->nullable();
             $table->string('poster')->nullable();
             $table->text('plot')->nullable();
         });

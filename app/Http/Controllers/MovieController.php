@@ -33,8 +33,6 @@ class MovieController extends Controller
         
         $data = \GuzzleHttp\json_decode($res->getBody(), true);
         
-        
-        print_r($data['Ratings']);
         $movie = Movie::firstOrCreate([
             'imdbID' => $data['imdbID'],
         ],
@@ -42,9 +40,10 @@ class MovieController extends Controller
             'title'=>$data['Title'],
             'year'=>$data['Year'],
             'year_released'=>$data['Released'],
+            'rating'=>$data['imdbRating'],
             'poster'=>$data['Poster'],
             'plot'=>$data['Plot'],
-            'ratings'=>$data['Ratings'],
+            
         ]);
 
        

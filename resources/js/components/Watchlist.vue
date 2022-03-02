@@ -2,24 +2,25 @@
     <div class="container-fluid">
         <div class="">
             <div class="base-width">
-                <div class="card" >
-                    <div class="card-header">Watchlist</div>
+                <div class="card" style="overflow-y: scroll;">
+                    <div >Watchlist</div>
                         <div class="card-wrapper" >
                             <ul class="pagination">
 
-                                <div id="card" class="card card-flip text-center "  v-for="movie in movies" v-bind:key="movie.id">
+                                <div id="card" class="card card-flip text-center " style="width: 18rem; height:18rem;" v-for="movie in movies" v-bind:key="movie.id" >
                                         <div class="card-front">
                                             <div class="card-up">
-                                                <img :src=movie.poster>
+                                                <img :src=movie.poster style="width: 18rem; height:18rem;">
                                             </div>
                                         </div>
                                         <div class="card-back">
                                             <div class="card-body">
-                                                {{ movie.title }}
+                                               <b style="font-size:3vw" > {{ movie.title }}</b>
                                                 <br>
                                                 {{ movie.plot }}
                                                 <br>
-                                                {{ movie.ratings }}
+                                                Rated : {{ movie.rating }}
+                                                <br>
                                                 <button id="search" @click='Remove_from_Watchlist(movie)'>Remove from watchlist</button>
                                             </div>
                                         </div>

@@ -3,7 +3,7 @@
   margin-left: 0;
   margin-right: 0;
   width: 100%;
-  overflow-y: scroll;
+  
 }
 
 .card-flip > div {
@@ -46,6 +46,9 @@
   }
 
 
+  .scroller{
+    
+  }
 
   div.scrollmenu {
     background-color: #333;

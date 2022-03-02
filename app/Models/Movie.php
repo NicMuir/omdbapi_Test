@@ -17,6 +17,7 @@ class Movie extends Model
         'title',
         'year',
         'year_releared',
+        'rating',
         'poster',
         'plot',
     ];
