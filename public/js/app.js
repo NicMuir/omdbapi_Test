@@ -5440,6 +5440,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5461,7 +5464,6 @@ __webpack_require__.r(__webpack_exports__);
         Title: this.message
       }).then(function (responce) {
         _this.data = responce.data;
-        console.log(_this.data);
       });
       document.getElementById("Movie_Display").style.display = "block";
       return;
@@ -5471,6 +5473,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log(responce);
       });
       window.location.reload();
+      alert(" Added to Watchlist ");
     }
   }
 });
@@ -5488,6 +5491,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
 //
 //
 //
@@ -5543,6 +5547,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log(responce);
       });
       window.location.reload();
+      alert(movie.title + " Removed from Watchlist");
     }
   }
 });
@@ -10722,7 +10727,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.base-width{\n  margin-left: 0;\n  margin-right: 0;\n  width: 100%;\n  \n}\n\n.card-flip > div {\n    backface-visibility: hidden;\n    transition: transform 300ms;\n    transition-timing-function: linear;\n    width: 100%;\n    height: 100%;\n    margin: 0;\n    display: flex;\n  }\n  \n  .card-front {\n    transform: rotateY(0deg);\n    \n  }\n  \n  .card-back {\n    transform: rotateY(180deg);\n    position: absolute;\n    top: 0;\n  }\n  \n  .card-flip:hover .card-front {\n    transform: rotateY(-180deg);\n  }\n    \n  .card-flip:hover .card-back {\n    transform: rotateY(0deg);\n  }\n\n  .card-wrapper{\n    margin-left: auto;\n    margin-right: auto;\n    \n  }\n\n  .card-up{\n   margin-left: 0;\n  }\n\n\n  .scroller{\n    \n  }\n\n  div.scrollmenu {\n    background-color: #333;\n    overflow: auto;\n    white-space: nowrap;\n  }\n  \n  div.scrollmenu a {\n    display: inline-block;\n    color: white;\n    text-align: center;\n    padding: 14px;\n    text-decoration: none;\n  }\n  \n  div.scrollmenu a:hover {\n    background-color: #777;\n  }", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.base-width{\n  margin-left: 0;\n  margin-right: 0;\n  width: 100%;\n  \n}\n\n.card-flip > div {\n    backface-visibility: hidden;\n    transition: transform 300ms;\n    transition-timing-function: linear;\n    width: 100%;\n    height: 100%;\n    margin: 0;\n    display: flex;\n  }\n  \n  .card-front {\n    transform: rotateY(0deg);\n    \n  }\n  \n  .card-back {\n    transform: rotateY(180deg);\n    position: absolute;\n    top: 0;\n  }\n  \n  .card-flip:hover .card-front {\n    transform: rotateY(-180deg);\n  }\n    \n  .card-flip:hover .card-back {\n    transform: rotateY(0deg);\n  }\n\n  .card-wrapper{\n    margin-left: auto;\n    margin-right: auto;\n    text-align: center;\n    \n  }\n\n.movie-cards{\n  width: 14rem; \n  height:18rem; \n  margin-left:10px;\n  margin-right:10px;\n  margin-top:20px;\n  margin-bottom: 20px;\n}\n\n\n\n  div.scrollmenu {\n    background-color: #333;\n    overflow: auto;\n    white-space: nowrap;\n  }\n  \n  div.scrollmenu a {\n    display: inline-block;\n    color: white;\n    text-align: center;\n    padding: 14px;\n    text-decoration: none;\n  }\n  \n  div.scrollmenu a:hover {\n    background-color: #777;\n  }", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -28924,7 +28929,10 @@ var render = function () {
               },
               [
                 _c("div", { staticClass: "card-body" }, [
-                  _c("img", { attrs: { src: _vm.data.poster } }),
+                  _c("img", {
+                    staticStyle: { width: "14rem", height: "18rem" },
+                    attrs: { src: _vm.data.poster },
+                  }),
                   _vm._v(" "),
                   _c("br"),
                   _vm._v(
@@ -28942,6 +28950,14 @@ var render = function () {
                   _vm._v(
                     "\n                        Rating:\n                        " +
                       _vm._s(_vm.data.rating) +
+                      "\n                        "
+                  ),
+                  _c("br"),
+                  _vm._v("\n                        Year: "),
+                  _c("br"),
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.data.year) +
                       "\n                        "
                   ),
                   _c("br"),
@@ -28993,12 +29009,14 @@ var render = function () {
   return _c("div", { staticClass: "container-fluid" }, [
     _c("div", {}, [
       _c("div", { staticClass: "base-width" }, [
+        _c("div", { staticStyle: { "margin-top": "10px" } }, [
+          _vm._v("Watchlist"),
+        ]),
+        _vm._v(" "),
         _c(
           "div",
           { staticClass: "card", staticStyle: { "overflow-y": "scroll" } },
           [
-            _c("div", [_vm._v("Watchlist")]),
-            _vm._v(" "),
             _c("div", { staticClass: "card-wrapper" }, [
               _c(
                 "ul",
@@ -29008,54 +29026,69 @@ var render = function () {
                     "div",
                     {
                       key: movie.id,
-                      staticClass: "card card-flip text-center ",
-                      staticStyle: { width: "18rem", height: "18rem" },
+                      staticClass: "card card-flip text-center movie-cards",
                       attrs: { id: "card" },
                     },
                     [
                       _c("div", { staticClass: "card-front" }, [
                         _c("div", { staticClass: "card-up" }, [
                           _c("img", {
-                            staticStyle: { width: "18rem", height: "18rem" },
+                            staticStyle: { width: "14rem", height: "18rem" },
                             attrs: { src: movie.poster },
                           }),
                         ]),
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "card-back" }, [
-                        _c("div", { staticClass: "card-body" }, [
-                          _c("b", { staticStyle: { "font-size": "3vw" } }, [
-                            _vm._v(" " + _vm._s(movie.title)),
-                          ]),
-                          _vm._v(" "),
-                          _c("br"),
-                          _vm._v(
-                            "\n                                            " +
-                              _vm._s(movie.plot) +
-                              "\n                                            "
-                          ),
-                          _c("br"),
-                          _vm._v(
-                            "\n                                            Rated : " +
-                              _vm._s(movie.rating) +
-                              "\n                                            "
-                          ),
-                          _c("br"),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              attrs: { id: "search" },
-                              on: {
-                                click: function ($event) {
-                                  return _vm.Remove_from_Watchlist(movie)
+                      _c(
+                        "div",
+                        {
+                          staticClass: "card-back",
+                          staticStyle: { "overflow-x": "scroll" },
+                        },
+                        [
+                          _c("div", { staticClass: "card-body" }, [
+                            _c("b", { staticStyle: { "font-size": "1vw" } }, [
+                              _vm._v(" " + _vm._s(movie.title)),
+                            ]),
+                            _vm._v(" "),
+                            _c("br"),
+                            _vm._v(
+                              "\n                                            " +
+                                _vm._s(movie.plot) +
+                                "\n                                            "
+                            ),
+                            _c("br"),
+                            _vm._v(
+                              "\n                                            Rated : " +
+                                _vm._s(movie.rating) +
+                                "\n                                            "
+                            ),
+                            _c("br"),
+                            _vm._v(
+                              "\n                                            Year: "
+                            ),
+                            _c("br"),
+                            _vm._v(
+                              "\n                                            " +
+                                _vm._s(movie.year) +
+                                "\n                                            "
+                            ),
+                            _c(
+                              "button",
+                              {
+                                attrs: { id: "search" },
+                                on: {
+                                  click: function ($event) {
+                                    _vm.Remove_from_Watchlist(movie)
+                                    _vm.say("Removed")
+                                  },
                                 },
                               },
-                            },
-                            [_vm._v("Remove from watchlist")]
-                          ),
-                        ]),
-                      ]),
+                              [_vm._v("Remove from watchlist")]
+                            ),
+                          ]),
+                        ]
+                      ),
                     ]
                   )
                 }),

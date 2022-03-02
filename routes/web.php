@@ -12,13 +12,13 @@ Route::view('/', 'auth.login');
 
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/home', [MovieController::class,'getAllMoviesToUser']);
+Route::get('/home', [MovieController::class,'getAllMoviesToUser'])->middleware('auth');
 
 
 
-Route::post('api/MovieToDB', [MovieController::class,'MovieToDB']);
-Route::post('api/addMovie', [MovieController::class,'addMovie']);
-Route::post('api/removeMovie', [MovieController::class,'removeMovie']);
+Route::post('api/MovieToDB', [MovieController::class,'MovieToDB'])->middleware('auth');
+Route::post('api/addMovie', [MovieController::class,'addMovie'])->middleware('auth');
+Route::post('api/removeMovie', [MovieController::class,'removeMovie'])->middleware('auth');
 
 
 

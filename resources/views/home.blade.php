@@ -8,6 +8,7 @@
 
            
         </div>
+        <flash-message class="myCustomClass"></flash-message>
     </div>
     <div class="base-width">
         <watch-list :movies= "{{ $Movies }}" ></watch-list>

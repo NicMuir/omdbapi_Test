@@ -66,11 +66,8 @@ class MovieController extends Controller
 
     public function getAllMoviesToUser()
     {
-        //$currentUser = Auth::user() ;
-        $currentUser = Auth::user();
-        //return ($currentUser->movies);//($currentUser->movies());
-
-        return view('/home',['Movies'=>$currentUser->movies]);
+        $currentUser = Auth::user();   
+        return view('/home',['Movies'=>$currentUser->movies->sortBy('movie_id')]);
     }
 
     public function removeMovie(Request $request){

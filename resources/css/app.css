@@ -38,17 +38,20 @@
   .card-wrapper{
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
     
   }
 
-  .card-up{
-   margin-left: 0;
-  }
+.movie-cards{
+  width: 14rem; 
+  height:18rem; 
+  margin-left:10px;
+  margin-right:10px;
+  margin-top:20px;
+  margin-bottom: 20px;
+}
 
 
-  .scroller{
-    
-  }
 
   div.scrollmenu {
     background-color: #333;

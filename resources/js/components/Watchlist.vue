@@ -2,26 +2,27 @@
     <div class="container-fluid">
         <div class="">
             <div class="base-width">
+                <div style="margin-top:10px;">Watchlist</div>
                 <div class="card" style="overflow-y: scroll;">
-                    <div >Watchlist</div>
-                        <div class="card-wrapper" >
+                        <div class="card-wrapper"  >
                             <ul class="pagination">
-
-                                <div id="card" class="card card-flip text-center " style="width: 18rem; height:18rem;" v-for="movie in movies" v-bind:key="movie.id" >
+                                <div id="card" class="card card-flip text-center movie-cards" v-for="movie in movies" v-bind:key="movie.id" >
                                         <div class="card-front">
                                             <div class="card-up">
-                                                <img :src=movie.poster style="width: 18rem; height:18rem;">
+                                                <img :src=movie.poster style="width: 14rem; height:18rem;">
                                             </div>
                                         </div>
-                                        <div class="card-back">
+                                        <div class="card-back" style="overflow-x: scroll;">
                                             <div class="card-body">
-                                               <b style="font-size:3vw" > {{ movie.title }}</b>
+                                               <b style="font-size:1vw" > {{ movie.title }}</b>
                                                 <br>
                                                 {{ movie.plot }}
                                                 <br>
                                                 Rated : {{ movie.rating }}
                                                 <br>
-                                                <button id="search" @click='Remove_from_Watchlist(movie)'>Remove from watchlist</button>
+                                                Year: <br>
+                                                {{ movie.year}}
+                                                <button id="search" @click='Remove_from_Watchlist(movie); say("Removed")'>Remove from watchlist</button>
                                             </div>
                                         </div>
                                 </div>
@@ -59,6 +60,7 @@
             Remove_from_Watchlist(movie){
                 axios.post('api/removeMovie', movie).then(responce => {console.log(responce)});
                 window.location.reload()
+                alert(movie.title + " Removed from Watchlist");
             }
         }
     }

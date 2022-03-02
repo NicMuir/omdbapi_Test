@@ -14,7 +14,7 @@
                         <div id="Movie_Display" class="card" style="display:none">
                             <!-- <div class="card-header">Dashboard</div> -->
                             <div  class="card-body" >
-                                <img :src=data.poster>
+                                <img :src=data.poster style="width: 14rem; height:18rem; centre">
                                 <br>
                             Title:
                             {{data.title}}
@@ -25,7 +25,10 @@
                             Rating:
                             {{data.rating}}
                             <br>
-                        <button id="search" @click='AddWatchlist()'>Add to Watchlist</button>
+                            Year: <br>
+                            {{ data.year  }}
+                            <br>
+                        <button id="search" @click='AddWatchlist();  '>Add to Watchlist</button>
                             </div>
                             
                     </div>
@@ -62,7 +65,7 @@
                 axios.post('api/MovieToDB', {Title: this.message }).then(responce => {
                     
                     this.data = responce.data;
-                    console.log(this.data);
+                    
                     });
 
                 document.getElementById("Movie_Display").style.display = "block";
@@ -72,6 +75,7 @@
             AddWatchlist(){
                 axios.post('api/addMovie', this.data).then(responce => {console.log(responce)});
                 window.location.reload()
+                alert(" Added to Watchlist ");
                 
             }
         }
